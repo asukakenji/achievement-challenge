@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Achievement Challenge (Client Interface)</title>
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<!-- jQuery UI -->
+	<!--
+	<link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	-->
+
+	<link type="text/css" rel="stylesheet" href="main.css">
+	<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+	<h1 id="title">Achievement Challenge (Client Interface)</h1>
+	<hr>
+	<div id="content">
+		<table id="login">
+			<tr>
+				<th colspan="2">Login</th>
+			</tr>
+			<tr>
+				<td><label for="username">Username:</label></td>
+				<td><input id="username" name="username" type="text"></td>
+			</tr>
+			<tr id="username_empty" class="display_none_by_default">
+				<td colspan="2"><span class="error">* Username must not be empty</span></td>
+			</tr>
+			<tr>
+				<td><label for="password">Password:</label></td>
+				<td><input id="password" name="password" type="password"></td>
+			</tr>
+			<tr id="password_empty" class="display_none_by_default">
+				<td colspan="2"><span class="error">* Password must not be empty</span></td>
+			</tr>
+			<tr id="password_error" class="display_none_by_default">
+				<td colspan="2"><span class="error">* Incorrect Password</span></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id="submit">Submit</div></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

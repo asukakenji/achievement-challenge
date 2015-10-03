@@ -1,0 +1,60 @@
+body {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#title {
+	text-align: center;
+}
+
+#content {
+}
+
+#login {
+	margin: auto;
+	/* border: 1px solid black; */
+	border-radius: 1em;
+	padding: 0em 1em 0em 0em;
+	background-image: linear-gradient(
+		to bottom right,
+		#ff7f7f,
+		#ffff7f,
+		#7fff7f,
+		#7fffff,
+		#7f7fff,
+		#ff7fff
+	);
+	background-repeat: no-repeat;
+}
+
+#login th {
+	font-size: 120%;
+	margin: auto;
+	text-align: center;
+}
+
+#login th, #login td {
+	padding: 0.5em 0em 0.5em 1em;
+}
+
+#submit {
+	border: 1px solid transparent;
+	border-radius: 0.5em;
+	background-color: rgba(215, 215, 215, 0.5);
+	text-align: center;
+}
+
+#submit:hover {
+	border: 1px solid #bfbfbf;
+	background-color: rgba(231, 231, 231, 0.5);
+}
+
+.error {
+	color: red;
+}
+
+.display_none_by_default {
+}
+
+.display_none {
+	display: none;
+}
