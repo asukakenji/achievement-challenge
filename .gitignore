@@ -1,0 +1,11 @@
+# Node.js module dependencies
+./node_modules
+
+# Mac OS X resource fork files
+._*
+
+# Test code
+test_*.js
+
+# The challenge description
+/*.pdf
