@@ -1,5 +1,5 @@
 # Node.js module dependencies
-./node_modules
+/node_modules
 
 # Mac OS X resource fork files
 ._*
