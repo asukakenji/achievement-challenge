@@ -1,0 +1,29 @@
+{
+  "name": "achievement-challenge",
+  "version": "0.0.1",
+  "description": "Backend Coding Challenge",
+  "keywords": [
+  ],
+  "homepage": "https://github.com/asukakenji/achievement-challenge#readme",
+  "bugs": {
+    "url": "https://github.com/asukakenji/achievement-challenge/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Siu Ching Pong -Asuka Kenji-",
+    "url": "https://hk.linkedin.com/in/siuchingpong"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asukakenji/achievement-challenge.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "^4.0.0"
+  }
+}
