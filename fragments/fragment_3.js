@@ -15,37 +15,23 @@ module.exports = {
 
 
 
-// See: http://www.json.org/
-function _is_json_value(value) {
-	if (value === undefined) return false;
-	if (value === null) return true;
-	return ([Object, Array, String, Number, Boolean].indexOf(value.constructor) !== -1);
-}
-
-function _is_name(name) {
-	return (typeof name === "string")
-		&& name.charAt(0) !== "$";
-}
-
-function _is_operator(operator) {
-	return (typeof operator === "string")
-		&& operator.charAt(0) === "$";
-}
-
-function _is_object(object) {
-	return (object !== undefined)
-		&& (object !== null)
-		&& (object.constructor === Object);
-}
-
-function _is_array(array) {
-	return (array !== undefined)
-		&& (array !== null)
-		&& (array.constructor === Array);
-}
-
-
-
+/**
+ * Canonicalizes a match expression.
+ * For example,
+ * {
+ *     "x": { "$gt": 1, "$lt": 2 },
+ *     "y": { "$gt": 3, "$lt": 4 }
+ * }
+ * will be canonicalized into:
+ * {
+ *     "$and": [
+ *         { "x": { "$gt": 1 } },
+ *         { "x": { "$lt": 2 } },
+ *         { "y": { "$gt": 3 } },
+ *         { "y": { "$lt": 4 } }
+ *     ]
+ * }
+ */
 function _canonicalize(match_expression) {
 	let root = [];
 	_canonicalize_match_expression(match_expression, "$and", root);
@@ -257,4 +243,45 @@ function _canonicalize_sub_field(name, comparison_operator, value, root) {
 	}
 	root.push( { [name]: { [comparison_operator]: value } } );
 	return root;
+}
+
+
+
+/**
+ * Checks whether a value is a valid JSON value.
+ * Valid JSON values:
+ * - Objects
+ * - Arrays
+ * - Strings
+ * - Numbers
+ * - Booleans (true / false)
+ * - Null (null)
+ */
+// See: http://www.json.org/
+function _is_json_value(value) {
+	if (value === undefined) return false;
+	if (value === null) return true;
+	return ([Object, Array, String, Number, Boolean].indexOf(value.constructor) !== -1);
+}
+
+function _is_name(name) {
+	return (typeof name === "string")
+		&& name.charAt(0) !== "$";
+}
+
+function _is_operator(operator) {
+	return (typeof operator === "string")
+		&& operator.charAt(0) === "$";
+}
+
+function _is_object(object) {
+	return (object !== undefined)
+		&& (object !== null)
+		&& (object.constructor === Object);
+}
+
+function _is_array(array) {
+	return (array !== undefined)
+		&& (array !== null)
+		&& (array.constructor === Array);
 }
