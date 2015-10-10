@@ -21,7 +21,7 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
 // 404
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   let err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 
 // 404 || 500
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -37,7 +37,7 @@ if (app.get('env') === 'development') {
     });
   });
 } else {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,

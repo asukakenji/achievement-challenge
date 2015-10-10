@@ -1,12 +1,12 @@
 'use strict';
 
-$(document).ready(function() {
+$(document).ready(function () {
   function hideDisplayNoneByDefault() {
     $('.display_none_by_default').addClass('display_none');
   }
   hideDisplayNoneByDefault();
 
-  $('#submit').click(function() {
+  $('#submit').click(function () {
     hideDisplayNoneByDefault();
     var username = $('#username').val();
     var password = $('#password').val();
@@ -23,14 +23,14 @@ $(document).ready(function() {
           'username': username,
           'password': password
         },
-        success: function(data, textStatus, jqXHR) {
+        success: function (data, textStatus, jqXHR) {
           console.log({
             'data': data,
             'textStatus': textStatus,
             'jqXHR': jqXHR
           });
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
           console.log({
             'jqXHR': jqXHR,
             'textStatus': textStatus,
