@@ -30,6 +30,9 @@ app.use(function (req, res, next) {
 // 404 || 500
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
+    console.log(err.message);
+    console.log(err.status || 500);
+    console.log(err.stack);
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
