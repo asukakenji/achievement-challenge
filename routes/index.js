@@ -62,16 +62,17 @@ function* login(req, res, next) {
     let user = { username, password };
     console.log('user: ' + s4(user));
 
-    let result = yield (callback) => collection.insertOne(user, callback);
-    //let result = co_mongodb.collection.insertOne(collection, user);
-    console.log('Inserted: ' + s4(result));
+    let insertResult = yield (callback) => collection.insertOne(user, callback);
+    //let insertResult = co_mongodb.collection.insertOne(collection, user);
+    console.log('Inserted: ' + s4(insertResult));
 
-    if (result.ok === 1 && result.n === 1) {
+    if (insertResult.result.ok === 1 && insertResult.result.n === 1) {
       let message = {
         'errorCode': 1,
         'url': '/game.html',
         'token': '1234567890ABCDEF'
       };
+      console.log('message: ' + s4(message));
       console.log('--------');
       console.log();
       res.send(message);
@@ -79,6 +80,7 @@ function* login(req, res, next) {
       let message = {
         'errorCode': -2
       };
+      console.log('message: ' + s4(message));
       console.log('--------');
       console.log();
       res.send(message);
@@ -97,6 +99,7 @@ function* login(req, res, next) {
         'url': '/game.html',
         'token': '1234567890ABCDEF'
       };
+      console.log('message: ' + s4(message));
       console.log('--------');
       console.log();
       res.send(message);
@@ -104,11 +107,15 @@ function* login(req, res, next) {
       let message = {
         'errorCode': -1
       };
+      console.log('message: ' + s4(message));
       console.log('--------');
       console.log();
       res.send(message);
     }
   }
+
+  yield (callback) => cursor.close(callback);
+  yield (callback) => db.close(false, callback);
 }
 
 module.exports = router;
