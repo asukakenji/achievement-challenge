@@ -9,3 +9,6 @@ test_*.js
 
 # The challenge description
 /*.pdf
+
+# npm debug log
+npm-debug.log
