@@ -5,8 +5,13 @@ let path = require('path');
 
 let routes = require('./routes/index');
 
-// Contents
 let app = express();
+
+// View Engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// Contents
 app.use('/', routes);
 app.use('/', express.static(path.join(__dirname, 'public')));
 
