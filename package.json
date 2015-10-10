@@ -2,8 +2,7 @@
   "name": "achievement-challenge",
   "version": "0.0.1",
   "description": "Backend Coding Challenge",
-  "keywords": [
-  ],
+  "keywords": [],
   "homepage": "https://github.com/asukakenji/achievement-challenge#readme",
   "bugs": {
     "url": "https://github.com/asukakenji/achievement-challenge/issues"
@@ -22,8 +21,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "express": "^4.13.3"
   },
   "engines": {
-    "node": "^4.0.0"
+    "node": "^4.1.2"
   }
 }
