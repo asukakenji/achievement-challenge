@@ -3,6 +3,10 @@
 
 # Mac OS X resource fork files
 ._*
+__MACOSX
+
+# Mac OS X Desktop Services Store files
+.DS_Store
 
 # Test code
 test_*.js
