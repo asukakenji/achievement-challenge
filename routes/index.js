@@ -3,6 +3,8 @@
 // TODO: Should be moved to somewhere else:
 let url = 'mongodb://localhost:27017/achievement_challenge';
 
+let Player = require('./player');
+
 let express = require('express');
 let router = express.Router();
 
@@ -24,11 +26,11 @@ router.post('/login', urlencoded_parser, co_express(login));
 
 /* Helper functions */
 function s0(value) {
-	return JSON.stringify(value);
+  return JSON.stringify(value);
 }
 
 function s4(value) {
-	return JSON.stringify(value, null, 4);
+  return JSON.stringify(value, null, 4);
 }
 
 function* login(req, res, next) {
@@ -40,11 +42,11 @@ function* login(req, res, next) {
   //let db = yield co_mongodb.MongoClient.connect(url);
   console.log('Connected');
 
-  let collection = yield (callback) => db.collection('users', callback);
-  //let collection = co_mongodb.db.collection(db, 'users');
+  let collection = yield (callback) => db.collection('players', callback);
+  //let collection = co_mongodb.db.collection(db, 'players');
   console.log('Collection obtained');
 
-  let query = { username };
+  let query = { '_id': username };
   console.log('query: ' + JSON.stringify(query));
 
   let cursor = yield (callback) => collection.find(query, callback);  // ???: mongodb source different from documentation
@@ -56,17 +58,18 @@ function* login(req, res, next) {
   console.log('Count obtained');
 
   if (count === 0) {
-    // Empty
-    console.log('User Not Found');
+    // New player is going to be created
+    console.log('Player Not Found');
 
-    let user = { username, password };
-    console.log('user: ' + s4(user));
+    let player = new Player (username, password);
+    console.log('player: ' + s4(player));
 
-    let insertResult = yield (callback) => collection.insertOne(user, callback);
-    //let insertResult = co_mongodb.collection.insertOne(collection, user);
+    let insertResult = yield (callback) => collection.insertOne(player, callback);
+    //let insertResult = co_mongodb.collection.insertOne(collection, player);
     console.log('Inserted: ' + s4(insertResult));
 
     if (insertResult.result.ok === 1 && insertResult.result.n === 1) {
+      // Player successfully created
       let message = {
         'errorCode': 1,
         'url': '/game.html',
@@ -77,6 +80,7 @@ function* login(req, res, next) {
       console.log();
       res.send(message);
     } else {
+      // Player creation failure
       let message = {
         'errorCode': -2
       };
@@ -87,13 +91,14 @@ function* login(req, res, next) {
     }
   } else {
     // Non-empty
-    console.log('User Found');
+    console.log('Player Found');
 
-    let user = yield (callback) => cursor.next(callback);
-    //let user = co_mongodb.cursor.next(cursor);
-    console.log('User Obtained: ' + s4(user));
+    let player = yield (callback) => cursor.next(callback);
+    //let player = co_mongodb.cursor.next(cursor);
+    console.log('Player Obtained: ' + s4(player));
 
-    if (user.password === password) {
+    if (player.password === password) {
+      // Correct password
       let message = {
         'errorCode': 0,
         'url': '/game.html',
@@ -104,6 +109,7 @@ function* login(req, res, next) {
       console.log();
       res.send(message);
     } else {
+      // Incorrect password
       let message = {
         'errorCode': -1
       };
