@@ -1,5 +1,5 @@
 # Node.js module dependencies
-/node_modules
+node_modules
 
 # Mac OS X resource fork files
 ._*
@@ -9,7 +9,7 @@ __MACOSX
 .DS_Store
 
 # Test code
-/test_code
+test_code
 
 # The challenge description
 /*.pdf
