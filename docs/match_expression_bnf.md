@@ -51,3 +51,96 @@
                                   <value> ::= <json-value>
                                   <empty> ::=
 ```
+
+# Grammar Examples
+
+Match Expression:
+```json
+{
+  "x": {
+    "$gt": 1,
+    "$lt": 2
+  },
+  "y": {
+    "$gt": 3,
+    "$lt": 4
+  },
+  "$or": [
+    {
+      "z1": 5
+    },
+    {
+      "z2": 6
+    }
+  ]
+}
+```
+
+* * *
+
+Match Expression Element:
+```json
+{
+  "x": {
+    "$gt": 1,
+    "$lt": 2
+  }
+}
+```
+
+Field Name (`e.fieldName()` / `name`):
+```json
+"x"
+```
+
+Sub (`e.Obj()` / `_parseSub()` / `sub`):
+```json
+{
+  "$gt": 1,
+  "$lt": 2
+}
+```
+
+Sub-Field:
+```json
+"$gt": 1
+```
+
+* * *
+
+Match Expression Element:
+```json
+{
+  "$or": [
+    {
+      "z1": 5
+    },
+    {
+      "z2": 6
+    }
+  ]
+}
+```
+
+Field Name (`e.fieldName()`):
+```json
+"$or"
+```
+
+Object (`e.Obj()` / `_parseTreeList()` / `arr`):
+```json
+[
+  {
+    "z1": 5
+  },
+  {
+    "z2": 6
+  }
+]
+```
+
+The names of grammatical constructs follow the origin naming in MongoDB.
+
+See:
+- [expression_parser.cpp](https://github.com/mongodb/mongo/blob/master/src/mongo/db/matcher/expression_parser.cpp)
+- [canonical_query.cpp](https://github.com/mongodb/mongo/blob/master/src/mongo/db/query/canonical_query.cpp)
