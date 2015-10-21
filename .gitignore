@@ -1,6 +1,3 @@
-# Node.js module dependencies
-node_modules
-
 # Mac OS X resource fork files
 ._*
 __MACOSX
@@ -8,11 +5,17 @@ __MACOSX
 # Mac OS X Desktop Services Store files
 .DS_Store
 
-# Test code
-test_code
-
-# The challenge description
-/*.pdf
+# Node.js module dependencies
+node_modules/
 
 # npm debug log
 npm-debug.log
+
+# Test code
+test_code/
+
+# Java class files
+target/
+
+# The challenge description
+/*.pdf
