@@ -9,7 +9,7 @@ __MACOSX
 .DS_Store
 
 # Test code
-test_*.js
+/test_code
 
 # The challenge description
 /*.pdf
