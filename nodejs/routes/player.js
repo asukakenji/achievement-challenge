@@ -1,7 +1,7 @@
 'use strict';
 
-/* Constructor of Player */
 class Player {
+  /* Constructor of Player */
   constructor(username, password) {
     // User properties
     this._id = username;
