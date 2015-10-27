@@ -41,6 +41,17 @@ class Utils {
     throw new TypeError();
   }
 
+  static padZero(totalDigitCount, number) {
+    totalDigitCount = this.checkNumber(totalDigitCount);
+    number = this.checkNumber(number);
+    if (totalDigitCount < 0) throw new RangeError('Invalid totalDigitCount value');
+    if (number < 0) throw new RangeError('Invalid number value');
+    let numberString = number.toString();
+    return (numberString.length < totalDigitCount)
+      ? ('0'.repeat(totalDigitCount - 1) + numberString).slice(-totalDigitCount)
+      : numberString;
+  }
+
 }
 
 module.exports = Utils;
