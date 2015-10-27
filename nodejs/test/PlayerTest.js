@@ -1,6 +1,6 @@
 'use strict';
 
-let Player = require('../routes/Player');
+let Player = require('../lib/Player');
 
 describe('Player', function () {
 
