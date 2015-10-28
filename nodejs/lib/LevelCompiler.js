@@ -2,6 +2,9 @@
 
 let Utils = require('./Utils');
 
+/**
+ * Experience (xp) represents the value accumulated in the current level
+ */
 class LevelCompiler {
 
   /**

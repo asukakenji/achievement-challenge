@@ -2,6 +2,9 @@
 
 let Utils = require('./Utils');
 
+/**
+ * One spin equals to one "spending chips, winning chips, earning experience" cycle
+ */
 class SpinCompiler {
 
   /**
