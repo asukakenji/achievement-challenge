@@ -31,7 +31,7 @@
     { "rank": "gold", "payoutAccumulated": 1000000, "xp": 5000 }
   ],
 
-  "": [
+  "achievements": [
     {
       "name": "lv005bonus",
       "target": "player",
