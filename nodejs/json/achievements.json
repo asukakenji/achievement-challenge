@@ -37,7 +37,7 @@
       "target": "player",
       "condition": {
         "lv": { "$gte": 5 }
-      }
+      },
       "action": {
         "$push": {
           "mails": {
@@ -54,7 +54,7 @@
       "target": "player",
       "condition": {
         "lv": { "$gte": 10 }
-      }
+      },
       "action": {
         "$push": {
           "mails": {
