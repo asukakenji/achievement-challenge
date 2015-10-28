@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('../lib/Utils');
+let Utils = require('./Utils');
 
 class Player {
 
