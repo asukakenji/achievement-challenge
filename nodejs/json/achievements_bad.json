@@ -1,11 +1,11 @@
 {
-	"lv002": {
-		"queue": "lv",
-		"condition": {
-			"lv": { "$eq": 1 },
-			"xp": { "$gte": 300 }
-		},
-		"action": function() {
-		}
-	}
+  "lv002": {
+    "queue": "lv",
+    "condition": {
+      "lv": { "$eq": 1 },
+      "xp": { "$gte": 300 }
+    },
+    "action": function() {
+    }
+  }
 }

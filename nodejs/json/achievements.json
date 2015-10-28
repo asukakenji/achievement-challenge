@@ -1,174 +1,174 @@
 {
-	"lv002": {
-		"queue": "lv",
-		"condition": {
-			"lv": { "$eq": 1 },
-			"xp": { "$gte": 300 }
-		},
-		"action": {
-			"$set": { "lv": 2 },
-			"$inc": { "xp": -300 }
-		}
-	},
-	"lv003": {
-		"queue": "lv",
-		"condition": {
-			"lv": { "$eq": 2 },
-			"xp": { "$gte": 700 }
-		},
-		"action": {
-			"$set": { "lv": 3 },
-			"$inc": { "xp": -700 }
-		}
-	},
-	"lv004": {
-		"queue": "lv",
-		"condition": {
-			"lv": { "$eq": 3 },
-			"xp": { "$gte": 1000 }
-		},
-		"action": {
-			"$set": { "lv": 4 },
-			"$inc": { "xp": -1000 }
-		}
-	},
-	"lv005": {
-		"queue": "lv",
-		"condition": {
-			"lv": { "$eq": 4 },
-			"xp": { "$gte": 1400 }
-		},
-		"action": {
-			"$set": { "lv": 5 },
-			"$inc": { "xp": -1400 },
-			"$push": {
-				"mb": {
-					"bonus": 3700
-				}
-			}
-		}
-	},
+  "lv002": {
+    "queue": "lv",
+    "condition": {
+      "lv": { "$eq": 1 },
+      "xp": { "$gte": 300 }
+    },
+    "action": {
+      "$set": { "lv": 2 },
+      "$inc": { "xp": -300 }
+    }
+  },
+  "lv003": {
+    "queue": "lv",
+    "condition": {
+      "lv": { "$eq": 2 },
+      "xp": { "$gte": 700 }
+    },
+    "action": {
+      "$set": { "lv": 3 },
+      "$inc": { "xp": -700 }
+    }
+  },
+  "lv004": {
+    "queue": "lv",
+    "condition": {
+      "lv": { "$eq": 3 },
+      "xp": { "$gte": 1000 }
+    },
+    "action": {
+      "$set": { "lv": 4 },
+      "$inc": { "xp": -1000 }
+    }
+  },
+  "lv005": {
+    "queue": "lv",
+    "condition": {
+      "lv": { "$eq": 4 },
+      "xp": { "$gte": 1400 }
+    },
+    "action": {
+      "$set": { "lv": 5 },
+      "$inc": { "xp": -1400 },
+      "$push": {
+        "mb": {
+          "bonus": 3700
+        }
+      }
+    }
+  },
 
-	"hr_bronze": {
-		"queue": "hr",
-		"condition": {
-			"wager": { "$gte": 100 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"bonus": 500,
-					"xp": 100
-				}
-			}
-		}
-	},
-	"hr_silver": {
-		"queue": "hr",
-		"condition": {
-			"wager": { "$gte": 1000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"bonus": 5000,
-					"xp": 1000
-				}
-			}
-		}
-	},
-	"hr_gold": {
-		"queue": "hr",
-		"condition": {
-			"wager": { "$gte": 10000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"bonus": 50000,
-					"xp": 10000
-				}
-			}
-		}
-	},
+  "hr_bronze": {
+    "queue": "hr",
+    "condition": {
+      "wager": { "$gte": 100 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "bonus": 500,
+          "xp": 100
+        }
+      }
+    }
+  },
+  "hr_silver": {
+    "queue": "hr",
+    "condition": {
+      "wager": { "$gte": 1000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "bonus": 5000,
+          "xp": 1000
+        }
+      }
+    }
+  },
+  "hr_gold": {
+    "queue": "hr",
+    "condition": {
+      "wager": { "$gte": 10000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "bonus": 50000,
+          "xp": 10000
+        }
+      }
+    }
+  },
 
-	"bs_bronze": {
-		"queue": "bs",
-		"condition": {
-			"wagerAccumulated": { "$gte": 10000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"xp": 1000
-				}
-			}
-		}
-	},
-	"bs_silver": {
-		"queue": "bs",
-		"condition": {
-			"wagerAccumulated": { "$gte": 100000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"xp": 2000
-				}
-			}
-		}
-	},
-	"bs_gold": {
-		"queue": "bs",
-		"condition": {
-			"wagerAccumulated": { "$gte": 1000000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"xp": 5000
-				}
-			}
-		}
-	},
+  "bs_bronze": {
+    "queue": "bs",
+    "condition": {
+      "wagerAccumulated": { "$gte": 10000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "xp": 1000
+        }
+      }
+    }
+  },
+  "bs_silver": {
+    "queue": "bs",
+    "condition": {
+      "wagerAccumulated": { "$gte": 100000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "xp": 2000
+        }
+      }
+    }
+  },
+  "bs_gold": {
+    "queue": "bs",
+    "condition": {
+      "wagerAccumulated": { "$gte": 1000000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "xp": 5000
+        }
+      }
+    }
+  },
 
-	"ls_bronze": {
-		"queue": "ls",
-		"condition": {
-			"payout": { "$gte": 10000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"loyalty": 100
-				}
-			}
-		}
-	},
-	"ls_silver": {
-		"queue": "ls",
-		"condition": {
-			"payout": { "$gte": 10000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"loyalty": 150
-				}
-			}
-		}
-	},
-	"ls_gold": {
-		"queue": "ls",
-		"condition": {
-			"payout": { "$gte": 10000 }
-		},
-		"action": {
-			"$push": {
-				"mb": {
-					"loyalty": 200
-				}
-			}
-		}
-	}
+  "ls_bronze": {
+    "queue": "ls",
+    "condition": {
+      "payout": { "$gte": 10000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "loyalty": 100
+        }
+      }
+    }
+  },
+  "ls_silver": {
+    "queue": "ls",
+    "condition": {
+      "payout": { "$gte": 10000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "loyalty": 150
+        }
+      }
+    }
+  },
+  "ls_gold": {
+    "queue": "ls",
+    "condition": {
+      "payout": { "$gte": 10000 }
+    },
+    "action": {
+      "$push": {
+        "mb": {
+          "loyalty": 200
+        }
+      }
+    }
+  }
 }
