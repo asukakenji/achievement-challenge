@@ -11,7 +11,7 @@ class HighRollerAchievementCompiler {
    * Compiles a high roller achievement object to a trigger object.
    */
   static compile(hr_object) {
-    let rank = Utils.checkString(hr_object.rank);
+    let rank = Utils.checkNonEmptyString(hr_object.rank);
     let wager = Utils.checkNumber(hr_object.wager);
     let bonus = Utils.checkNumber(hr_object.bonus);
     let xp = Utils.checkNumber(hr_object.xp);

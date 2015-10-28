@@ -11,7 +11,7 @@ class BigSpenderAchievementCompiler {
    * Compiles a big spender achievement object to a trigger object.
    */
   static compile(bs_object) {
-    let rank = Utils.checkString(bs_object.rank);
+    let rank = Utils.checkNonEmptyString(bs_object.rank);
     let wagerAccumulated = Utils.checkNumber(bs_object.wagerAccumulated);
     let xp = Utils.checkNumber(bs_object.xp);
     if (wagerAccumulated < 0) throw new RangeError('Invalid wagerAccumulated value');

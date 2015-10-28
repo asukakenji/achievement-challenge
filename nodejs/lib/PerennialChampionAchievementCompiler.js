@@ -11,7 +11,7 @@ class PerennialChampionAchievementCompiler {
    * Compiles a perennial champion achievement object to a trigger object.
    */
   static compile(pc_object) {
-    let rank = Utils.checkString(pc_object.rank);
+    let rank = Utils.checkNonEmptyString(pc_object.rank);
     let payoutAccumulated = Utils.checkNumber(pc_object.payoutAccumulated);
     let xp = Utils.checkNumber(pc_object.xp);
     if (payoutAccumulated < 0) throw new RangeError('Invalid payoutAccumulated value');

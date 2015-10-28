@@ -11,7 +11,7 @@ class LuckyStarAchievementCompiler {
    * Compiles a lucky star achievement object to a trigger object.
    */
   static compile(ls_object) {
-    let rank = Utils.checkString(ls_object.rank);
+    let rank = Utils.checkNonEmptyString(ls_object.rank);
     let payout = Utils.checkNumber(ls_object.payout);
     let lp = Utils.checkNumber(ls_object.lp);
     if (payout < 0) throw new RangeError('Invalid payout value');
