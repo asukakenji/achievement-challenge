@@ -16,6 +16,7 @@ class LevelCompiler {
     let trigger_object = {
       'name': name,
       'queue': 'lv',
+      'target': 'player',
       'condition': {
         'lv': { '$eq': lv },
         'xp': { '$gte': xp }

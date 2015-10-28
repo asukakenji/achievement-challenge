@@ -15,6 +15,7 @@ class SpinCompiler {
     if (payout < 0) throw new RangeError('Invalid payout value');
     if (xp < 0) throw new RangeError('Invalid xp value');
     let trigger_object = {
+      'target': 'player',
       'condition': {
         'chips': { '$gte': wager }
       },
