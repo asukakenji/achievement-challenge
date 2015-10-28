@@ -54,15 +54,15 @@ describe('Utils', function () {
     });
     it('should throw no error if either value or defaultValue works', function () {
       // 04
-      assert.equal(Utils.checkNonEmptyString(undefined, 'YYY'), 'YYY');
+      assert.strictEqual(Utils.checkNonEmptyString(undefined, 'YYY'), 'YYY');
       // 12
-      assert.equal(Utils.checkNonEmptyString('', 'YYY'), 'YYY');
+      assert.strictEqual(Utils.checkNonEmptyString('', 'YYY'), 'YYY');
       // 13
-      assert.equal(Utils.checkNonEmptyString('XXX'), 'XXX');
+      assert.strictEqual(Utils.checkNonEmptyString('XXX'), 'XXX');
       // 15
-      assert.equal(Utils.checkNonEmptyString('XXX', ''), 'XXX');
+      assert.strictEqual(Utils.checkNonEmptyString('XXX', ''), 'XXX');
       // 16
-      assert.equal(Utils.checkNonEmptyString('XXX', 'YYY'), 'XXX');
+      assert.strictEqual(Utils.checkNonEmptyString('XXX', 'YYY'), 'XXX');
     });
   });
 
@@ -97,11 +97,11 @@ describe('Utils', function () {
     });
     it('should throw no error if either value or defaultValue works', function () {
       // 03
-      assert.equal(Utils.checkNumber(undefined, 42), 42);
+      assert.strictEqual(Utils.checkNumber(undefined, 42), 42);
       // 07
-      assert.equal(Utils.checkNumber(24, undefined), 24);
+      assert.strictEqual(Utils.checkNumber(24, undefined), 24);
       // 09
-      assert.equal(Utils.checkNumber(24, 42), 24);
+      assert.strictEqual(Utils.checkNumber(24, 42), 24);
     });
   });
 
@@ -136,11 +136,11 @@ describe('Utils', function () {
     });
     it('should throw no error if either value or defaultValue works', function () {
       // 03
-      assert.deepEqual(Utils.checkArray(undefined, [42]), [42]);
+      assert.deepStrictEqual(Utils.checkArray(undefined, [42]), [42]);
       // 07
-      assert.deepEqual(Utils.checkArray([24], undefined), [24]);
+      assert.deepStrictEqual(Utils.checkArray([24], undefined), [24]);
       // 09
-      assert.deepEqual(Utils.checkArray([24], [42]), [24]);
+      assert.deepStrictEqual(Utils.checkArray([24], [42]), [24]);
     });
   });
 
@@ -158,24 +158,24 @@ describe('Utils', function () {
       assert.throws(() => Utils.padZero(0, -1), RangeError);
     });
     it('should work correctly when totalDigitCount === 0', function () {
-      assert.equal(Utils.padZero(0, 0), '0');
-      assert.equal(Utils.padZero(0, 10), '10');
-      assert.equal(Utils.padZero(0, 100), '100');
+      assert.strictEqual(Utils.padZero(0, 0), '0');
+      assert.strictEqual(Utils.padZero(0, 10), '10');
+      assert.strictEqual(Utils.padZero(0, 100), '100');
     });
     it('should work correctly when totalDigitCount === 1', function () {
-      assert.equal(Utils.padZero(1, 0), '0');
-      assert.equal(Utils.padZero(1, 10), '10');
-      assert.equal(Utils.padZero(1, 100), '100');
+      assert.strictEqual(Utils.padZero(1, 0), '0');
+      assert.strictEqual(Utils.padZero(1, 10), '10');
+      assert.strictEqual(Utils.padZero(1, 100), '100');
     });
     it('should work correctly when totalDigitCount === 2', function () {
-      assert.equal(Utils.padZero(2, 0), '00');
-      assert.equal(Utils.padZero(2, 10), '10');
-      assert.equal(Utils.padZero(2, 100), '100');
+      assert.strictEqual(Utils.padZero(2, 0), '00');
+      assert.strictEqual(Utils.padZero(2, 10), '10');
+      assert.strictEqual(Utils.padZero(2, 100), '100');
     });
     it('should work correctly when totalDigitCount === 3', function () {
-      assert.equal(Utils.padZero(3, 0), '000');
-      assert.equal(Utils.padZero(3, 10), '010');
-      assert.equal(Utils.padZero(3, 100), '100');
+      assert.strictEqual(Utils.padZero(3, 0), '000');
+      assert.strictEqual(Utils.padZero(3, 10), '010');
+      assert.strictEqual(Utils.padZero(3, 100), '100');
     });
   });
 
