@@ -144,8 +144,33 @@ describe('Utils', function () {
     });
   });
 
+  //       total
+  //       Digit
+  // id    Count        number       result
+  // --    ---------    ---------    ---------
+  // 01    undefined    undefined    TypeError
+  // 02    {}           undefined    TypeError
+  // 03    0            undefined    TypeError
+  // 04    {}           {}           TypeError
+  // 05    {}           0            TypeError
+  // 06    0            {}           TypeError
+  // 07    -1           0            RangeError
+  // 08    0            -1           RangeError
+  // 09    0            0            0
+  // 10    0            10           10
+  // 11    0            100          100
+  // 12    1            0            0
+  // 13    1            10           10
+  // 14    1            100          100
+  // 15    2            0            00
+  // 16    2            10           10
+  // 17    2            100          100
+  // 18    3            0            000
+  // 19    3            10           010
+  // 20    3            100          100
   describe('#padZero()', function () {
     it('should throw TypeError', function () {
+      // 01 ~ 06
       assert.throws(() => Utils.padZero(), TypeError);
       assert.throws(() => Utils.padZero({}), TypeError);
       assert.throws(() => Utils.padZero(0), TypeError);
@@ -154,25 +179,30 @@ describe('Utils', function () {
       assert.throws(() => Utils.padZero(0, {}), TypeError);
     });
     it('should throw RangeError', function () {
+      // 07 ~ 08
       assert.throws(() => Utils.padZero(-1, 0), RangeError);
       assert.throws(() => Utils.padZero(0, -1), RangeError);
     });
     it('should work correctly when totalDigitCount === 0', function () {
+      // 09 ~ 11
       assert.strictEqual(Utils.padZero(0, 0), '0');
       assert.strictEqual(Utils.padZero(0, 10), '10');
       assert.strictEqual(Utils.padZero(0, 100), '100');
     });
     it('should work correctly when totalDigitCount === 1', function () {
+      // 12 ~ 14
       assert.strictEqual(Utils.padZero(1, 0), '0');
       assert.strictEqual(Utils.padZero(1, 10), '10');
       assert.strictEqual(Utils.padZero(1, 100), '100');
     });
     it('should work correctly when totalDigitCount === 2', function () {
+      // 15 ~ 17
       assert.strictEqual(Utils.padZero(2, 0), '00');
       assert.strictEqual(Utils.padZero(2, 10), '10');
       assert.strictEqual(Utils.padZero(2, 100), '100');
     });
     it('should work correctly when totalDigitCount === 3', function () {
+      // 18 ~ 20
       assert.strictEqual(Utils.padZero(3, 0), '000');
       assert.strictEqual(Utils.padZero(3, 10), '010');
       assert.strictEqual(Utils.padZero(3, 100), '100');
