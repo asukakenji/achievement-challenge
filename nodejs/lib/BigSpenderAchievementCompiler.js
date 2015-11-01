@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 /**
  * Big Spender - Achievement for wager amount (total chips spent)
@@ -11,18 +11,16 @@ class BigSpenderAchievementCompiler {
    * Compiles a big spender achievement object to a trigger object.
    */
   static compile(bs_object) {
-    let rank = Utils.checkNonEmptyString(bs_object.rank);
-    let wagerAccumulated = Utils.checkNumber(bs_object.wagerAccumulated);
-    let xp = Utils.checkNumber(bs_object.xp);
-    if (wagerAccumulated < 0) throw new RangeError('Invalid wagerAccumulated value');
-    if (xp < 0) throw new RangeError('Invalid xp value');
-    let name = 'bs_' + rank;
-    let trigger_object = {
+    const rank = Utils.checkNonEmptyString(bs_object.rank);
+    const wager_accumulated = Utils.checkNumberGTE(bs_object.wagerAccumulated, 0);
+    const xp = Utils.checkNumberGTE(bs_object.xp, 0);
+    const name = 'bs_' + rank;
+    const trigger_object = {
       'name': name,
       'queue': 'bs',
       'target': 'player',
       'condition': {
-        'wagerAccumulated': { '$gte': wagerAccumulated }
+        'wagerAccumulated': { '$gte': wager_accumulated }
       },
       'action': {
         '$push': {
