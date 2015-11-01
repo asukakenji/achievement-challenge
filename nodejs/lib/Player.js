@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 class Player {
 
@@ -11,18 +11,18 @@ class Player {
     this.password = Utils.checkNonEmptyString(password);
 
     // Player properties
-    this.lv = Utils.checkNumber(lv, 1);                      // Level
-    this.xp = Utils.checkNumber(xp, 0);                      // Experience Points
-    this.lp = Utils.checkNumber(lp, 100);                    // Loyalty Points
-    this.chips = Utils.checkNumber(chips, 3000);             // Chips
+    this.lv = Utils.checkNumberGTE(lv, 1, 1);                // Level
+    this.xp = Utils.checkNumberGTE(xp, 0, 0);                // Experience Points
+    this.lp = Utils.checkNumberGTE(lp, 0, 100);              // Loyalty Points
+    this.chips = Utils.checkNumberGTE(chips, 0, 3000);       // Chips
     this.achievements = Utils.checkArray(achievements, []);  // Achievements
     this.mails = Utils.checkArray(mails, []);                // Mails
 
     // Player properties (accumulated)
-    this.spinAccumulated = Utils.checkNumber(spinAccumulated, 0);      // Spin = Number of Spins
-    this.wagerAccumulated = Utils.checkNumber(wagerAccumulated, 0);    // Wager = Chips Paid for a Spin
-    this.payoutAccumulated = Utils.checkNumber(payoutAccumulated, 0);  // Payout = Chips Won for a Spin
-    this.bonusAccumulated = Utils.checkNumber(bonusAccumulated, 0);    // Bonus = Chips Got from Non-Spin Means
+    this.spinAccumulated = Utils.checkNumberGTE(spinAccumulated, 0, 0);      // Spin = Number of Spins
+    this.wagerAccumulated = Utils.checkNumberGTE(wagerAccumulated, 0, 0);    // Wager = Chips Paid for a Spin
+    this.payoutAccumulated = Utils.checkNumberGTE(payoutAccumulated, 0, 0);  // Payout = Chips Won for a Spin
+    this.bonusAccumulated = Utils.checkNumberGTE(bonusAccumulated, 0, 0);    // Bonus = Chips Got from Non-Spin Means
   }
 
 }
