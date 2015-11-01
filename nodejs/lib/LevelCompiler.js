@@ -11,8 +11,8 @@ class LevelCompiler {
    * Compiles a level object to a trigger object.
    */
   static compile(level_object) {
-    const lv = Utils.checkNumberGTE(level_object.lv, 0);
-    const xp = Utils.checkNumberGTE(level_object.xp, 0);
+    const lv = Utils.checkNumberGT(level_object.lv, 0);
+    const xp = Utils.checkNumberGT(level_object.xp, 0);
     const name = 'lv' + Utils.padZero(3, lv + 1);
     const trigger_object = {
       'name': name,
