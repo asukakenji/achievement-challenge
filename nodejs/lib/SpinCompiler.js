@@ -1,6 +1,7 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
+const Spin = require('./Spin');
 
 /**
  * One spin equals to one "spending chips, winning chips, earning experience" cycle
@@ -10,25 +11,20 @@ class SpinCompiler {
   /**
    * Compiles a spin object to a trigger object.
    */
-  static compile(spin_object) {
-    let wager = Utils.checkNumber(spin_object.wager);
-    let payout = Utils.checkNumber(spin_object.payout);
-    let xp = Utils.checkNumber(spin_object.xp);
-    if (wager < 0) throw new RangeError('Invalid wager value');
-    if (payout < 0) throw new RangeError('Invalid payout value');
-    if (xp < 0) throw new RangeError('Invalid xp value');
-    let trigger_object = {
+  static compile(spin) {
+    const checked_spin = new Spin(spin.wager, spin.payout, spin.xp);
+    const trigger_object = {
       'target': 'player',
       'condition': {
-        'chips': { '$gte': wager }
+        'chips': { '$gte': checked_spin.wager }
       },
       'action': {
         '$inc': {
-          'xp' : xp,
-          'chips': payout - wager,
+          'xp' : checked_spin.xp,
+          'chips': checked_spin.payout - checked_spin.wager,
           'spinAccumulated': 1,
-          'wagerAccumulated': wager,
-          'payoutAccumulated': payout
+          'wagerAccumulated': checked_spin.wager,
+          'payoutAccumulated': checked_spin.payout
         }
       }
     };
