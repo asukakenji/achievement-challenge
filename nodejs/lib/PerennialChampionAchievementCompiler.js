@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 /**
  * Perennial Champion - Achievement for payout amount (total chips won)
@@ -11,18 +11,16 @@ class PerennialChampionAchievementCompiler {
    * Compiles a perennial champion achievement object to a trigger object.
    */
   static compile(pc_object) {
-    let rank = Utils.checkNonEmptyString(pc_object.rank);
-    let payoutAccumulated = Utils.checkNumber(pc_object.payoutAccumulated);
-    let xp = Utils.checkNumber(pc_object.xp);
-    if (payoutAccumulated < 0) throw new RangeError('Invalid payoutAccumulated value');
-    if (xp < 0) throw new RangeError('Invalid xp value');
-    let name = 'pc_' + rank;
-    let trigger_object = {
+    const rank = Utils.checkNonEmptyString(pc_object.rank);
+    const payout_accumulated = Utils.checkNumberGTE(pc_object.payoutAccumulated, 0);
+    const xp = Utils.checkNumberGTE(pc_object.xp, 0);
+    const name = 'pc_' + rank;
+    const trigger_object = {
       'name': name,
       'queue': 'pc',
       'target': 'player',
       'condition': {
-        'payoutAccumulated': { '$gte': payoutAccumulated }
+        'payoutAccumulated': { '$gte': payout_accumulated }
       },
       'action': {
         '$push': {
