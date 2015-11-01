@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 /**
  * High Roller - Achievement for wager amount (chips spent in one spin)
@@ -11,15 +11,12 @@ class HighRollerAchievementCompiler {
    * Compiles a high roller achievement object to a trigger object.
    */
   static compile(hr_object) {
-    let rank = Utils.checkNonEmptyString(hr_object.rank);
-    let wager = Utils.checkNumber(hr_object.wager);
-    let bonus = Utils.checkNumber(hr_object.bonus);
-    let xp = Utils.checkNumber(hr_object.xp);
-    if (wager < 0) throw new RangeError('Invalid wager value');
-    if (bonus < 0) throw new RangeError('Invalid bonus value');
-    if (xp < 0) throw new RangeError('Invalid xp value');
-    let name = 'hr_' + rank;
-    let trigger_object = {
+    const rank = Utils.checkNonEmptyString(hr_object.rank);
+    const wager = Utils.checkNumberGTE(hr_object.wager, 0);
+    const xp = Utils.checkNumberGTE(hr_object.xp, 0);
+    const bonus = Utils.checkNumberGTE(hr_object.bonus, 0);
+    const name = 'hr_' + rank;
+    const trigger_object = {
       'name': name,
       'queue': 'hr',
       'target': 'spin',
@@ -30,8 +27,8 @@ class HighRollerAchievementCompiler {
         '$push': {
           'mails': {
             'name': name,
-            'bonus': bonus,
-            'xp': xp
+            'xp': xp,
+            'bonus': bonus
           }
         }
       }
