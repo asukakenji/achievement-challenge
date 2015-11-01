@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 /**
  * Lucky Star - Achievement for payout amount (chips won in one spin)
@@ -11,13 +11,11 @@ class LuckyStarAchievementCompiler {
    * Compiles a lucky star achievement object to a trigger object.
    */
   static compile(ls_object) {
-    let rank = Utils.checkNonEmptyString(ls_object.rank);
-    let payout = Utils.checkNumber(ls_object.payout);
-    let lp = Utils.checkNumber(ls_object.lp);
-    if (payout < 0) throw new RangeError('Invalid payout value');
-    if (lp < 0) throw new RangeError('Invalid lp value');
-    let name = 'ls_' + rank;
-    let trigger_object = {
+    const rank = Utils.checkNonEmptyString(ls_object.rank);
+    const payout = Utils.checkNumberGTE(ls_object.payout, 0);
+    const lp = Utils.checkNumberGTE(ls_object.lp, 0);
+    const name = 'ls_' + rank;
+    const trigger_object = {
       'name': name,
       'queue': 'ls',
       'target': 'spin',
