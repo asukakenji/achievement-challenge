@@ -1,21 +1,21 @@
 'use strict';
 
-let BigSpenderAchievementCompiler = require('../lib/BigSpenderAchievementCompiler');
-let assert = require('assert');
+const BigSpenderAchievementCompiler = require('../lib/BigSpenderAchievementCompiler');
+const assert = require('assert');
 
 describe('BigSpenderAchievementCompiler', function () {
 
   describe('#compile()', function () {
     it('should throw TypeError', function() {
-      let bs_object_1 = { 'rank': '', 'wagerAccumulated': 0, 'xp': 0 };
+      const bs_object_1 = { 'rank': '', 'wagerAccumulated': 0, 'xp': 0 };
       assert.throws(() => BigSpenderAchievementCompiler.compile(), TypeError);
       assert.throws(() => BigSpenderAchievementCompiler.compile(null), TypeError);
       assert.throws(() => BigSpenderAchievementCompiler.compile({}), TypeError);
       assert.throws(() => BigSpenderAchievementCompiler.compile(bs_object_1), TypeError);
     });
     it('should throw RangeError', function() {
-      let bs_object_1 = { 'rank': 'XXX', 'wagerAccumulated': -1, 'xp': 0 };
-      let bs_object_2 = { 'rank': 'XXX', 'wagerAccumulated': 0, 'xp': -1 };
+      const bs_object_1 = { 'rank': 'XXX', 'wagerAccumulated': -1, 'xp': 0 };
+      const bs_object_2 = { 'rank': 'XXX', 'wagerAccumulated': 0, 'xp': -1 };
       assert.throws(() => BigSpenderAchievementCompiler.compile(bs_object_1), RangeError);
       assert.throws(() => BigSpenderAchievementCompiler.compile(bs_object_2), RangeError);
     });

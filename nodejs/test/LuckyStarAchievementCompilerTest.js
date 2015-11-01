@@ -1,21 +1,21 @@
 'use strict';
 
-let LuckyStarAchievementCompiler = require('../lib/LuckyStarAchievementCompiler');
-let assert = require('assert');
+const LuckyStarAchievementCompiler = require('../lib/LuckyStarAchievementCompiler');
+const assert = require('assert');
 
 describe('LuckyStarAchievementCompiler', function () {
 
   describe('#compile()', function () {
     it('should throw TypeError', function() {
-      let ls_object_1 = { 'rank': '', 'payout': 0, 'lp': 0 };
+      const ls_object_1 = { 'rank': '', 'payout': 0, 'lp': 0 };
       assert.throws(() => LuckyStarAchievementCompiler.compile(), TypeError);
       assert.throws(() => LuckyStarAchievementCompiler.compile(null), TypeError);
       assert.throws(() => LuckyStarAchievementCompiler.compile({}), TypeError);
       assert.throws(() => LuckyStarAchievementCompiler.compile(ls_object_1), TypeError);
     });
     it('should throw RangeError', function() {
-      let ls_object_1 = { 'rank': 'XXX', 'payout': -1, 'lp': 0 };
-      let ls_object_2 = { 'rank': 'XXX', 'payout': 0, 'lp': -1 };
+      const ls_object_1 = { 'rank': 'XXX', 'payout': -1, 'lp': 0 };
+      const ls_object_2 = { 'rank': 'XXX', 'payout': 0, 'lp': -1 };
       assert.throws(() => LuckyStarAchievementCompiler.compile(ls_object_1), RangeError);
       assert.throws(() => LuckyStarAchievementCompiler.compile(ls_object_2), RangeError);
     });
