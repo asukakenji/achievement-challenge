@@ -1,6 +1,6 @@
 'use strict';
 
-let Utils = require('./Utils');
+const Utils = require('./Utils');
 
 /**
  * Experience (xp) represents the value accumulated in the current level
@@ -11,12 +11,10 @@ class LevelCompiler {
    * Compiles a level object to a trigger object.
    */
   static compile(level_object) {
-    let lv = Utils.checkNumber(level_object.lv);
-    let xp = Utils.checkNumber(level_object.xp);
-    if (lv <= 0) throw new RangeError('Invalid lv value');
-    if (xp <= 0) throw new RangeError('Invalid xp value');
-    let name = 'lv' + Utils.padZero(3, lv + 1);
-    let trigger_object = {
+    const lv = Utils.checkNumberGTE(level_object.lv, 0);
+    const xp = Utils.checkNumberGTE(level_object.xp, 0);
+    const name = 'lv' + Utils.padZero(3, lv + 1);
+    const trigger_object = {
       'name': name,
       'queue': 'lv',
       'target': 'player',
