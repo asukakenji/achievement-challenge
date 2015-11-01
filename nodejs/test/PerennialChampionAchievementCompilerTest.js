@@ -1,21 +1,21 @@
 'use strict';
 
-let PerennialChampionAchievementCompiler = require('../lib/PerennialChampionAchievementCompiler');
-let assert = require('assert');
+const PerennialChampionAchievementCompiler = require('../lib/PerennialChampionAchievementCompiler');
+const assert = require('assert');
 
 describe('PerennialChampionAchievementCompiler', function () {
 
   describe('#compile()', function () {
     it('should throw TypeError', function() {
-      let pc_object_1 = { 'rank': '', 'payoutAccumulated': 0, 'xp': 0 };
+      const pc_object_1 = { 'rank': '', 'payoutAccumulated': 0, 'xp': 0 };
       assert.throws(() => PerennialChampionAchievementCompiler.compile(), TypeError);
       assert.throws(() => PerennialChampionAchievementCompiler.compile(null), TypeError);
       assert.throws(() => PerennialChampionAchievementCompiler.compile({}), TypeError);
       assert.throws(() => PerennialChampionAchievementCompiler.compile(pc_object_1), TypeError);
     });
     it('should throw RangeError', function() {
-      let pc_object_1 = { 'rank': 'XXX', 'payoutAccumulated': -1, 'xp': 0 };
-      let pc_object_2 = { 'rank': 'XXX', 'payoutAccumulated': 0, 'xp': -1 };
+      const pc_object_1 = { 'rank': 'XXX', 'payoutAccumulated': -1, 'xp': 0 };
+      const pc_object_2 = { 'rank': 'XXX', 'payoutAccumulated': 0, 'xp': -1 };
       assert.throws(() => PerennialChampionAchievementCompiler.compile(pc_object_1), RangeError);
       assert.throws(() => PerennialChampionAchievementCompiler.compile(pc_object_2), RangeError);
     });
