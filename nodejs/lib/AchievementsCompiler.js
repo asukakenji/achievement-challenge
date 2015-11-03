@@ -1,11 +1,11 @@
 'use strict';
 
-let Utils = require('./Utils');
-let LVCompiler = require('./LevelCompiler');
-let HRCompiler = require('./HighRollerAchievementCompiler');
-let BSCompiler = require('./BigSpenderAchievementCompiler');
-let LSCompiler = require('./LuckyStarAchievementCompiler');
-let PCCompiler = require('./PerennialChampionAchievementCompiler');
+const Utils = require('./Utils');
+const LVCompiler = require('./LevelCompiler');
+const HRCompiler = require('./HighRollerAchievementCompiler');
+const BSCompiler = require('./BigSpenderAchievementCompiler');
+const LSCompiler = require('./LuckyStarAchievementCompiler');
+const PCCompiler = require('./PerennialChampionAchievementCompiler');
 
 // private
 function compile_simple_achievements(achievement_array, triggers_object, compiler) {
@@ -38,8 +38,8 @@ class AchievementsCompiler {
    * Compiles an achievements object to a trigger object.
    */
   static compile(achievements_object) {
-    let triggers_object = {};
-    for (let key of Object.keys(achievements_object)) {
+    const triggers_object = {};
+    for (const key of Object.keys(achievements_object)) {
       switch (key) {
       case 'levels':
         this.compileLevels(achievements_object.levels, triggers_object);
