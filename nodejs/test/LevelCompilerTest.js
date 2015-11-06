@@ -13,7 +13,7 @@ describe('LevelCompiler', function () {
       assert.throws(() => LevelCompiler.compile(lv_object_2), RangeError);
     });
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         LevelCompiler.compile(
           { 'lv': 1, 'xp': 300 }
         ),

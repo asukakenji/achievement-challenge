@@ -8,7 +8,7 @@ describe('SpinCompiler', function () {
 
   describe('#compile()', function () {
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         SpinCompiler.compile(new Spin(100, 150, 100)),
         {
           'target': 'player',
@@ -26,7 +26,7 @@ describe('SpinCompiler', function () {
           }
         }
       );
-      assert.deepEqual(
+      assert.deepStrictEqual(
         SpinCompiler.compile(new Spin(100, 50, 100)),
         {
           'target': 'player',

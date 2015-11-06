@@ -20,7 +20,7 @@ describe('BigSpenderAchievementCompiler', function () {
       assert.throws(() => BigSpenderAchievementCompiler.compile(bs_object_2), RangeError);
     });
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         BigSpenderAchievementCompiler.compile(
           { 'rank': 'bronze', 'wagerAccumulated': 10000, 'xp': 1000 }
         ),

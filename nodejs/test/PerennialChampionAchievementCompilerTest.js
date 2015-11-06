@@ -20,7 +20,7 @@ describe('PerennialChampionAchievementCompiler', function () {
       assert.throws(() => PerennialChampionAchievementCompiler.compile(pc_object_2), RangeError);
     });
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         PerennialChampionAchievementCompiler.compile(
           { 'rank': 'bronze', 'payoutAccumulated': 10000, 'xp': 1000 }
         ),

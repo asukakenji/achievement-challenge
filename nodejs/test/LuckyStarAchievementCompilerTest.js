@@ -20,7 +20,7 @@ describe('LuckyStarAchievementCompiler', function () {
       assert.throws(() => LuckyStarAchievementCompiler.compile(ls_object_2), RangeError);
     });
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         LuckyStarAchievementCompiler.compile(
           { 'rank': 'bronze', 'payout': 10000, 'lp': 100 }
         ),

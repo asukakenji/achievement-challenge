@@ -22,7 +22,7 @@ describe('HighRollerAchievementCompiler', function () {
       assert.throws(() => HighRollerAchievementCompiler.compile(hr_object_3), RangeError);
     });
     it('should compile the target correctly', function () {
-      assert.deepEqual(
+      assert.deepStrictEqual(
         HighRollerAchievementCompiler.compile(
           { 'rank': 'bronze', 'wager': 100, 'xp': 500, 'bonus': 100 }
         ),
