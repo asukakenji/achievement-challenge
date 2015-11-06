@@ -30,24 +30,24 @@ describe('Player', function () {
       assert.throws(() => new Player('Username', 'Password', 1, 0, 100, 3000, [], [], 0, 0, -1, 0), RangeError);
       assert.throws(() => new Player('Username', 'Password', 1, 0, 100, 3000, [], [], 0, 0, 0, -1), RangeError);
     });
-    it('should create the player correctly', function () {
-      assert.deepEqual(
-        new Player('Username', 'Password'),
-        {
-          '_id': 'Username',
-          'password': 'Password',
-          'lv': 1,
-          'xp': 0,
-          'lp': 100,
-          'chips': 3000,
-          'achievements': [],
-          'mails': [],
-          'spinAccumulated': 0,
-          'wagerAccumulated': 0,
-          'payoutAccumulated': 0,
-          'bonusAccumulated': 0
-        }
-      )
+    it('should create the player correctly #1', function () {
+      let player1 = new Player('Username', 'Password');
+      let player2 = {
+        '_id': 'Username',
+        'password': 'Password',
+        'lv': 1,
+        'xp': 0,
+        'lp': 100,
+        'chips': 3000,
+        'achievements': [],
+        'mails': [],
+        'spinAccumulated': 0,
+        'wagerAccumulated': 0,
+        'payoutAccumulated': 0,
+        'bonusAccumulated': 0
+      };
+      Object.setPrototypeOf(player2, Player.prototype);
+      assert.deepStrictEqual(player1, player2);
     });
   });
 
