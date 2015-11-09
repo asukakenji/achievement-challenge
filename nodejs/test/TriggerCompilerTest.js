@@ -479,9 +479,9 @@ describe('TriggerCompiler', function () {
         'lv': 1,
         'xp': 300
       };
-      //assert(trigger.function(player));
-      //assert.strictEqual(player.lv, 2);
-      //assert.strictEqual(player.xp, 0);
+      assert(trigger.function(player));
+      assert.strictEqual(player.lv, 2);
+      assert.strictEqual(player.xp, 0);
     });
   });
 
