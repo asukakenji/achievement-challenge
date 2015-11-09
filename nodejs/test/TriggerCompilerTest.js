@@ -5,7 +5,7 @@ const assert = require('assert');
 
 describe('TriggerCompiler', function () {
 
-  describe('#compile()', function () {
+  describe('#compile() - condition part', function () {
     it('Case: {}', function() {
       const source = {
         'name': 'case-0',
@@ -330,9 +330,128 @@ describe('TriggerCompiler', function () {
         ] }
       );
     });
+  });
 
 
 
+  describe('#compile() - action part', function () {
+    it('Case: {}', function() {
+      const source = {
+        'name': 'case-0',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {}
+      };
+      const trigger = TriggerCompiler.compile(source);
+      assert.deepStrictEqual(trigger.source.action, []);
+    });
+
+    it('Case: { "$uop": {} }', function() {
+      const source = {
+        'name': 'case-1',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {
+          '$inc': {}
+        }
+      };
+      const trigger = TriggerCompiler.compile(source);
+      // TODO: Should throw error
+      assert.deepStrictEqual(trigger.source.action, []);
+    });
+
+    it('Case: { "$uop": { "name": "value" } }', function() {
+      const source = {
+        'name': 'case-2',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {
+          '$inc': {
+            'xp': 100
+          }
+        }
+      };
+      const trigger = TriggerCompiler.compile(source);
+      assert.deepStrictEqual(trigger.source.action, [
+        { '$inc': { 'xp': 100 } }
+      ]);
+    });
+
+    it('Case: { "$uop": { "name1": "value1", "name2": "value2" } }', function() {
+      const source = {
+        'name': 'case-3',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {
+          '$inc': {
+            'xp': 100,
+            'chips': 200
+          }
+        }
+      };
+      const trigger = TriggerCompiler.compile(source);
+      assert.deepStrictEqual(trigger.source.action, [
+        { '$inc': { 'xp': 100 } },
+        { '$inc': { 'chips': 200 } }
+      ]);
+    });
+
+    it('Case: { "$uop1": { "name1": "value1" }, "$uop2": { "name2": "value2" } }', function() {
+      const source = {
+        'name': 'case-4',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {
+          '$inc': {
+            'xp': -300
+          },
+          '$set': {
+            'lv': 2
+          }
+        }
+      };
+      const trigger = TriggerCompiler.compile(source);
+      assert.deepStrictEqual(trigger.source.action, [
+        { '$inc': { 'xp': -300 } },
+        { '$set': { 'lv': 2 } }
+      ]);
+    });
+
+    it('Case: { "$uop1": { "name1": "value1", "name2": "value2" }, "$uop2": { "name3": "value3", "name4": "value4" } }', function() {
+      const source = {
+        'name': 'case-5',
+        'queue': 'lv',
+        'target': 'player',
+        'condition': {},
+        'action': {
+          '$inc': {
+            'xp': -300,
+            'chips': 1000
+          },
+          '$set': {
+            'lv': 2,
+            'lp': 500
+          }
+        }
+      };
+      const trigger = TriggerCompiler.compile(source);
+      assert.deepStrictEqual(trigger.source.action, [
+        { '$inc': { 'xp': -300 } },
+        { '$inc': { 'chips': 1000 } },
+        { '$set': { 'lv': 2 } },
+        { '$set': { 'lp': 500 } }
+      ]);
+    });
+  });
+
+
+
+  describe('#compile() - both parts', function () {
     it('#99', function() {
       const source = {
         'name': 'lv002',
