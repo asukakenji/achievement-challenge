@@ -62,6 +62,7 @@ function canonicalize_tree_list(logical_operator, operands) {
   switch (checked_operands.length) {
     case 0: {
       // Case: { "$lop": [] }
+      // TODO: Error message
       throw new TypeError();
     }
     case 1: {
@@ -153,7 +154,24 @@ function optimized_condition(canonicalized_condition_object) {
  */
 // private
 function canonicalize_action(action_object) {
-  return action_object;
+  const result = [];
+
+  const checked_update_expression = Utils.checkObject(action_object);
+  const update_operators = Object.keys(checked_update_expression);
+  for (const update_operator of update_operators) {
+    const update_sub = checked_update_expression[update_operator];
+    const fields = Object.keys(update_sub);
+    for (const field of fields) {
+      const value = update_sub[field];
+      result.push({
+        [update_operator]: {
+          [field]: value
+        }
+      });
+    }
+  }
+
+  return result;
 }
 
 /**
